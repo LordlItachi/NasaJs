@@ -1,17 +1,24 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 
-export default function SideBar() {
+export default function SideBar(props) {
+  const {handleToggleModal , data} = props;
+
   return (
     <div className='sidebar'>
       <div className='bgOverLay'></div>
         <div className='sidebarContents'>
-          <h2>The Brutal Martian Landscape </h2>  
-          <div>
-            <p>Description</p>
-            <p>afoaogkaow ajiohawojo oahwfoanwojfl awofowaj</p>
-        
+          <h2>{data?.title} </h2>  
+          <div className='descriptionContainer'>
+            <p className='descriptionTitle'>{data?.date}</p>
+            <p>{data?.explanation}</p>
           </div>
+          <button onClick={handleToggleModal}>
+          <i className="fa-solid fa-arrow-right"></i>
+          </button>
       </div>
     </div>
   )
+}
+SideBar.propTypes = {
+  handleToggleModal: PropTypes.func
 }
